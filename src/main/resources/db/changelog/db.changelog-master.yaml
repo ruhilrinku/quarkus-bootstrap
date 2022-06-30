@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: nishant_kumar
+
+  - include:
+      file: DDL/01_create_company_table.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: DML/01_insert_data_company.sql
+      relativeToChangelogFile: true
