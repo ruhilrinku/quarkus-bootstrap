@@ -1,7 +1,7 @@
 --liquibase formatted sql
---changeset nishant_kumar:create-tables
+--changeset nishant_kumar:create-company-table-2
 
-CREATE TABLE company(
+CREATE TABLE If NOT EXISTS company(
    id INT PRIMARY KEY,
    code VARCHAR(40),
    name VARCHAR(100),

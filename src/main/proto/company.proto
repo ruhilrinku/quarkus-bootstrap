@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.brightly";
+option java_outer_classname = "CompanyGrpcProto";
+
+package company;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service CompanyGrpc {
+  rpc addCompany (CompanyDto) returns (Response) {}
+  rpc listCompanies (google.protobuf.Empty) returns (CompanyList) {}
+  rpc listCompanyById (google.protobuf.Int64Value) returns (CompanyDto) {}
+}
+
+message CompanyDto {
+  int64 companyId = 1;
+  string companyName = 2;
+  string companyDescription = 3;
+  string companyCode = 4;
+}
+
+message Response {
+  string message = 1;
+}
+
+message CompanyList {
+  repeated CompanyDto resultList=1;
+  google.protobuf.Int64Value resultCount=2;
+}

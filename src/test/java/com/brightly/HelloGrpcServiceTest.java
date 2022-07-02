@@ -18,8 +18,8 @@ public class HelloGrpcServiceTest {
     @Test
     public void testHello() {
         HelloReply reply = helloGrpc
-                .sayHello(HelloRequest.newBuilder().setName("Neo").build()).await().atMost(Duration.ofSeconds(5));
-        assertEquals("Hello Neo!", reply.getMessage());
+                .sayHello(HelloRequest.newBuilder().setName("Neo").setTitle("Mr.").build()).await().atMost(Duration.ofSeconds(5));
+        assertEquals("Hello Mr., Neo! Welcome to Grpc World!!", reply.getMessage());
     }
 
 }

@@ -1,16 +1,19 @@
 package com.brightly;
 
+import io.grpc.stub.StreamObserver;
 import io.quarkus.grpc.GrpcService;
 
-import io.smallrye.mutiny.Uni;
-
 @GrpcService
-public class HelloGrpcService implements HelloGrpc {
+public class HelloGrpcService extends HelloGrpcGrpc.HelloGrpcImplBase {
 
     @Override
-    public Uni<HelloReply> sayHello(HelloRequest request) {
-        return Uni.createFrom().item("Hello " + request.getName() + "!")
-                .map(msg -> HelloReply.newBuilder().setMessage(msg).build());
-    }
+    public void sayHello(HelloRequest request, StreamObserver<HelloReply> responseObserver) {
+        String title = request.getTitle();
+        String name = request.getName();
 
+        String message = "Hello " + title + ", " + name + "! Welcome to Grpc World!!";
+
+        responseObserver.onNext(HelloReply.newBuilder().setMessage(message).build());
+        responseObserver.onCompleted();
+    }
 }

@@ -3,6 +3,7 @@ package com.brightly.services;
 import com.brightly.dto.CompanyDto;
 import com.brightly.entity.Company;
 import com.brightly.repository.CompanyRepository;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -12,10 +13,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
+@RegisterForReflection
 public class CompanyServiceImpl implements CompanyService {
 
     @Inject
-    private CompanyRepository companyRepository;
+    CompanyRepository companyRepository ;
 
     @Override
     @Transactional
