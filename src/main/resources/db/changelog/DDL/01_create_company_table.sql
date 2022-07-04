@@ -8,6 +8,8 @@ CREATE TABLE If NOT EXISTS company(
    description VARCHAR(256)
 );
 
+--rollback drop table if exists company;
+
 CREATE SEQUENCE If NOT EXISTS public.hibernate_sequence
     INCREMENT BY 1
     MINVALUE 1
@@ -15,3 +17,5 @@ CREATE SEQUENCE If NOT EXISTS public.hibernate_sequence
     START 1
     CACHE 1
     NO CYCLE;
+
+--rollback drop SEQUENCE If EXISTS public.hibernate_sequence;

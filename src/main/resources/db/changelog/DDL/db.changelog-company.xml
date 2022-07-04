@@ -1,0 +1,38 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <changeSet author="nishant_kumar" id="createSequence-1">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="hibernate_sequence" startValue="1"/>
+        <rollback>
+            <dropSequence sequenceName="hibernate_sequence" />
+        </rollback>
+    </changeSet>
+    <changeSet author="nishant_kumar" id="createTableCompany-2">
+        <createTable tableName="company">
+            <column name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="company_pkey"/>
+            </column>
+            <column name="code" type="VARCHAR(40)"/>
+            <column name="name" type="VARCHAR(100)"/>
+            <column name="description" type="VARCHAR(256)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="company"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="02" author="nishant_kumar">
+        <tagDatabase tag="v1" />
+    </changeSet>
+    <changeSet author="nishant_kumar" id="createTableParts-3">
+        <createTable tableName="parts">
+            <column name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="parts_pkey"/>
+            </column>
+            <column name="code" type="VARCHAR(40)"/>
+            <column name="name" type="VARCHAR(100)"/>
+            <column name="description" type="VARCHAR(256)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="parts" />
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
